@@ -36,13 +36,6 @@
     background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
     border-radius: 50%;
   }
-  .header::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; left: 30%;
-    width: 300px; height: 150px;
-    background: radial-gradient(ellipse, rgba(139,92,246,0.08) 0%, transparent 70%);
-  }
   .name {
     font-size: 2.4rem;
     font-weight: 700;
@@ -87,10 +80,8 @@
   .summary-band {
     background: #1e2235;
     border-left: 3px solid #6366f1;
-    margin: 0 48px;
+    margin: 28px 48px 0;
     padding: 16px 20px;
-    margin-top: 28px;
-    margin-bottom: 0;
     border-radius: 0 6px 6px 0;
     font-size: 0.88rem;
     line-height: 1.7;
@@ -217,10 +208,6 @@
   .gold { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
   .silver { background: rgba(148,163,184,0.1); color: #94a3b8; border: 1px solid #2d3250; }
   .award-text { font-size: 0.82rem; color: #94a3b8; line-height: 1.5; }
-  @media print {
-    body { background: white; color: black; padding: 0; }
-    .page { box-shadow: none; border-radius: 0; }
-  }
 </style>
 </head>
 <body>
@@ -235,11 +222,12 @@
     </div>
   </div>
 
-  <div class="summary-band" style="margin: 28px 48px 0;">
+  <div class="summary-band">
     Data &amp; AI leader with 8+ years driving business transformation across healthcare, financial services, and enterprise environments. Proven track record building automated data pipelines, deploying production ML systems, and translating complex findings into strategic decisions for senior leadership. Deep expertise in Python, Snowflake, and cloud platforms across GCP and AWS. Passionate about scaling AI-driven capabilities and developing high-impact data teams. <span style="color:#a5b4fc; font-style:italic;">Seeking a Director or VP role where I can scale both the technology and the people — building AI functions that deliver measurable business outcomes.</span>
   </div>
 
-  <div style="padding: 0 48px; margin-bottom: 0;">
+  <!-- CORE COMPETENCIES -->
+  <div style="padding: 0 48px; margin-top: 28px;">
     <div style="border: 1px solid #2d3250; border-radius: 8px; padding: 14px 20px; background: #1e2235; display: flex; flex-wrap: wrap; gap: 10px 0; justify-content: center;">
       <span style="font-size:0.72rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#6366f1; width:100%; text-align:center; margin-bottom:8px;">Core Competencies</span>
       <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
@@ -261,13 +249,14 @@
     <div class="section">
       <div class="section-label"><span>Experience</span></div>
 
+      <!-- 1. ARORIS HEALTH -->
       <div class="job">
         <div class="job-header">
           <div>
             <div class="job-title">Senior Data Scientist</div>
             <div class="job-company">Aroris Health</div>
           </div>
-          <div class="job-date">Early 2025 – Present</div>
+          <div class="job-date">Mar 2025 – Present</div>
         </div>
         <ul class="bullets">
           <li>Architected and launched <span class="highlight">Live Claims Monitoring</span> — the company's first complete SaaS module — processing <span class="highlight">millions of claims</span> from 835 X12 files with <span class="highlight">100% accuracy at the claim level</span>, directly driving new A360 membership revenue from SaaS-only clients.</li>
@@ -278,13 +267,30 @@
         </ul>
       </div>
 
+      <!-- 2. WELLS FARGO LEAD -->
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Lead Analytic Consultant</div>
+            <div class="job-company">Wells Fargo</div>
+          </div>
+          <div class="job-date">Jan 2024 – Mar 2025</div>
+        </div>
+        <ul class="bullets">
+          <li>Led the design and execution of <span class="highlight">data analytic frameworks for class-level customer remediations</span>, determining the scope and financial impact of harm done to affected customer populations.</li>
+          <li>Partnered cross-functionally with <span class="highlight">Credit Card, Legal, Credit Bureau, and Data teams</span> to quantify harm, establish remediation methodologies, and ensure regulatory alignment.</li>
+          <li>Developed analytical approaches to assess harm at scale, translating complex financial and legal requirements into <span class="highlight">reproducible, auditable data pipelines</span> used to remediate customers.</li>
+        </ul>
+      </div>
+
+      <!-- 3. OPTUM -->
       <div class="job">
         <div class="job-header">
           <div>
             <div class="job-title">Senior Data Scientist</div>
             <div class="job-company">Optum (UnitedHealth Group)</div>
           </div>
-          <div class="job-date">Apr 2022 – Early 2025</div>
+          <div class="job-date">Apr 2022 – Jan 2024</div>
         </div>
         <ul class="bullets">
           <li>Architected and deployed <span class="highlight">end-to-end ETL automation</span> that eliminated 75% of manual reporting workload for the RX data analysis team, returning <span class="highlight">1,000+ hours annually</span> to higher-value analytical work.</li>
@@ -295,6 +301,7 @@
         </ul>
       </div>
 
+      <!-- 4. HUNTINGTON -->
       <div class="job">
         <div class="job-header">
           <div>
@@ -312,6 +319,7 @@
         </ul>
       </div>
 
+      <!-- 5. WELLS FARGO SENIOR -->
       <div class="job">
         <div class="job-header">
           <div>
@@ -325,6 +333,7 @@
           <li>Engineered a Python solution to mass-convert PDF regulatory filings to HTML for SEC reporting, demonstrating early initiative in <span class="highlight">automating compliance workflows</span>.</li>
         </ul>
       </div>
+
     </div>
 
     <!-- SKILLS -->
@@ -389,7 +398,7 @@
       </div>
     </div>
 
-    <!-- EDUCATION + AWARDS side by side -->
+    <!-- EDUCATION + AWARDS -->
     <div class="two-col">
       <div class="section">
         <div class="section-label"><span>Education</span></div>
