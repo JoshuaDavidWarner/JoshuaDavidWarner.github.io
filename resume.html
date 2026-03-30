@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Warner Resume</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0f1117;
+    color: #e2e8f0;
+    min-height: 100vh;
+    padding: 24px;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #1a1d27;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  }
+  .header {
+    background: linear-gradient(135deg, #1e2235 0%, #0f1117 100%);
+    border-bottom: 1px solid #2d3250;
+    padding: 40px 48px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 300px; height: 150px;
+    background: radial-gradient(ellipse, rgba(139,92,246,0.08) 0%, transparent 70%);
+  }
+  .name {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #f1f5f9;
+    position: relative;
+    z-index: 1;
+  }
+  .title-tag {
+    display: inline-block;
+    margin-top: 8px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .contact-item {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .contact-item span.dot {
+    width: 5px; height: 5px;
+    background: #6366f1;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .summary-band {
+    background: #1e2235;
+    border-left: 3px solid #6366f1;
+    margin: 0 48px;
+    padding: 16px 20px;
+    margin-top: 28px;
+    margin-bottom: 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #cbd5e1;
+  }
+  .body { padding: 28px 48px 40px; }
+  .section { margin-bottom: 32px; }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .section-label span {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6366f1;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #2d3250, transparent);
+  }
+  .job { margin-bottom: 24px; }
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .job-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f1f5f9;
+  }
+  .job-company {
+    font-size: 0.85rem;
+    color: #818cf8;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .job-date {
+    font-size: 0.78rem;
+    color: #64748b;
+    white-space: nowrap;
+    background: #1e2235;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid #2d3250;
+  }
+  .bullets { list-style: none; margin-top: 10px; }
+  .bullets li {
+    font-size: 0.84rem;
+    color: #94a3b8;
+    line-height: 1.65;
+    padding: 4px 0 4px 16px;
+    position: relative;
+    border-bottom: 1px solid #1e2235;
+  }
+  .bullets li:last-child { border-bottom: none; }
+  .bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #6366f1;
+    font-size: 0.7rem;
+    top: 6px;
+  }
+  .highlight { color: #e2e8f0; font-weight: 600; }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .skill-group { margin-bottom: 14px; }
+  .skill-group-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6366f1;
+    margin-bottom: 8px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    background: #1e2235;
+    border: 1px solid #2d3250;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .tag.accent {
+    border-color: #4338ca;
+    color: #a5b4fc;
+    background: rgba(99,102,241,0.08);
+  }
+  .edu-item { margin-bottom: 14px; }
+  .edu-degree { font-size: 0.9rem; font-weight: 700; color: #f1f5f9; }
+  .edu-school { font-size: 0.82rem; color: #818cf8; margin: 2px 0; }
+  .edu-detail { font-size: 0.78rem; color: #64748b; }
+  .award-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #1e2235;
+  }
+  .award-row:last-child { border-bottom: none; }
+  .award-badge {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .gold { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+  .silver { background: rgba(148,163,184,0.1); color: #94a3b8; border: 1px solid #2d3250; }
+  .award-text { font-size: 0.82rem; color: #94a3b8; line-height: 1.5; }
+  @media print {
+    body { background: white; color: black; padding: 0; }
+    .page { box-shadow: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="name">Joshua Warner</div>
+    <div class="title-tag">AI &amp; Data Leadership · Director / VP</div>
+    <div class="contact-row">
+      <div class="contact-item"><span class="dot"></span> Minneapolis, MN</div>
+      <div class="contact-item"><span class="dot"></span> linkedin.com/in/joshua-david-warner</div>
+      <div class="contact-item"><span class="dot"></span> joshuadavidwarner@yahoo.com</div>
+    </div>
+  </div>
+
+  <div class="summary-band" style="margin: 28px 48px 0;">
+    Data &amp; AI leader with 8+ years driving business transformation across healthcare, financial services, and enterprise environments. Proven track record building automated data pipelines, deploying production ML systems, and translating complex findings into strategic decisions for senior leadership. Deep expertise in Python, Snowflake, and cloud platforms across GCP and AWS. Passionate about scaling AI-driven capabilities and developing high-impact data teams. <span style="color:#a5b4fc; font-style:italic;">Seeking a Director or VP role where I can scale both the technology and the people — building AI functions that deliver measurable business outcomes.</span>
+  </div>
+
+  <div style="padding: 0 48px; margin-bottom: 0;">
+    <div style="border: 1px solid #2d3250; border-radius: 8px; padding: 14px 20px; background: #1e2235; display: flex; flex-wrap: wrap; gap: 10px 0; justify-content: center;">
+      <span style="font-size:0.72rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#6366f1; width:100%; text-align:center; margin-bottom:8px;">Core Competencies</span>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
+        <span style="font-size:0.76rem; color:#cbd5e1; padding: 4px 14px; background:#0f1117; border:1px solid #2d3250; border-radius:20px;">AI Product Strategy</span>
+        <span style="font-size:0.76rem; color:#cbd5e1; padding: 4px 14px; background:#0f1117; border:1px solid #2d3250; border-radius:20px;">LLM Integration & Deployment</span>
+        <span style="font-size:0.76rem; color:#cbd5e1; padding: 4px 14px; background:#0f1117; border:1px solid #2d3250; border-radius:20px;">Cloud Architecture (GCP · AWS)</span>
+        <span style="font-size:0.76rem; color:#cbd5e1; padding: 4px 14px; background:#0f1117; border:1px solid #2d3250; border-radius:20px;">Healthcare Data & Compliance</span>
+        <span style="font-size:0.76rem; color:#cbd5e1; padding: 4px 14px; background:#0f1117; border:1px solid #2d3250; border-radius:20px;">SaaS Product Development</span>
+        <span style="font-size:0.76rem; color:#cbd5e1; padding: 4px 14px; background:#0f1117; border:1px solid #2d3250; border-radius:20px;">Team Enablement & Mentoring</span>
+        <span style="font-size:0.76rem; color:#cbd5e1; padding: 4px 14px; background:#0f1117; border:1px solid #2d3250; border-radius:20px;">Stakeholder Communication</span>
+        <span style="font-size:0.76rem; color:#cbd5e1; padding: 4px 14px; background:#0f1117; border:1px solid #2d3250; border-radius:20px;">Data Pipeline Architecture</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- EXPERIENCE -->
+    <div class="section">
+      <div class="section-label"><span>Experience</span></div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Senior Data Scientist</div>
+            <div class="job-company">Aroris Health</div>
+          </div>
+          <div class="job-date">Early 2025 – Present</div>
+        </div>
+        <ul class="bullets">
+          <li>Architected and launched <span class="highlight">Live Claims Monitoring</span> — the company's first complete SaaS module — processing <span class="highlight">millions of claims</span> from 835 X12 files with <span class="highlight">100% accuracy at the claim level</span>, directly driving new A360 membership revenue from SaaS-only clients.</li>
+          <li>Built and deployed a <span class="highlight">competitor intelligence API</span> combining Claude API and Google Geodistance on GCP to compute provider proximity and specialization similarity, enabling clients to benchmark and respond to competitive threats in their markets.</li>
+          <li>Engineered production-grade parsers for <span class="highlight">835 and 837 X12 EDI formats</span> — co-developed with Claude and ChatGPT — enabling automated dispute submissions to payers and recovering <span class="highlight">tens of thousands of dollars annually</span> per client, delivering meaningful financial security to healthcare providers.</li>
+          <li>Built and maintained <span class="highlight">SOC2-compliant infrastructure on GCP</span> using Cloud Run, Vertex AI, Firebase, and Cloud SQL (PostgreSQL), ensuring enterprise-grade security and scalability for all platform modules.</li>
+          <li>Leveraged <span class="highlight">AI co-development practices</span> (Claude API, Vertex AI, MCP tooling) to accelerate feature delivery, establishing a repeatable pattern for shipping intelligent, API-first SaaS capabilities.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Senior Data Scientist</div>
+            <div class="job-company">Optum (UnitedHealth Group)</div>
+          </div>
+          <div class="job-date">Apr 2022 – Early 2025</div>
+        </div>
+        <ul class="bullets">
+          <li>Architected and deployed <span class="highlight">end-to-end ETL automation</span> that eliminated 75% of manual reporting workload for the RX data analysis team, returning <span class="highlight">1,000+ hours annually</span> to higher-value analytical work.</li>
+          <li>Designed a <span class="highlight">customer intelligence framework</span> fusing 3rd-party AI sentiment scores with survey data and a <span class="highlight">BERT NLP model</span> for customer segmentation, enabling leadership to direct investment toward statistically significant customer segments and improve campaign ROI.</li>
+          <li>Built and delivered recurring <span class="highlight">SQL, Python, and data engineering bootcamps</span> — recorded and distributed org-wide — upskilling <span class="highlight">500+ employees</span> across Optum Marketing.</li>
+          <li>Developed reusable Python tooling (RSA token decryption, concurrent SQL execution via SQLAlchemy) adopted across teams to accelerate Snowflake access and standardize data workflows.</li>
+          <li>Presented data-driven narratives to senior leadership via <span class="highlight">Databricks</span>, translating complex model outputs into clear strategic recommendations, with data infrastructure spanning <span class="highlight">Amazon RDS, Snowflake, and S3</span>.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Senior Data Analytics Auditor</div>
+            <div class="job-company">Huntington Bank</div>
+          </div>
+          <div class="job-date">Sept 2020 – Apr 2022</div>
+        </div>
+        <ul class="bullets">
+          <li>Designed and implemented <span class="highlight">50+ automated data integrity tests</span> for Anti-Money Laundering (AML) compliance, strengthening the bank's regulatory posture across all lines of defense.</li>
+          <li>Led end-to-end development of an <span class="highlight">enterprise data lake pipeline</span> — ingesting, staging, and surfacing 3rd-party data into Snowflake relational tables — serving as the foundation for cross-functional analytics.</li>
+          <li>Delivered a <span class="highlight">2,000-line Python risk reporting engine</span> used quarterly by all risk and audit divisions, replacing a previously manual process.</li>
+          <li>Applied unsupervised clustering and statistical analysis in R to investigate <span class="highlight">portfolios exceeding $1B</span>, identifying data gaps and anomalous patterns that saved the bank millions of dollars.</li>
+          <li>Partnered cross-functionally with business units to convert audit findings into actionable engineering solutions across <span class="highlight">Hadoop Data Lake</span>, DB2, Oracle, and SQL Server environments.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Senior Analytic Specialist</div>
+            <div class="job-company">Wells Fargo</div>
+          </div>
+          <div class="job-date">Jan 2019 – Sept 2020</div>
+        </div>
+        <ul class="bullets">
+          <li>Built Tableau dashboards and SQL-based reports for Corporate Trust Services leadership, enabling data-informed operations across large-scale business initiatives.</li>
+          <li>Engineered a Python solution to mass-convert PDF regulatory filings to HTML for SEC reporting, demonstrating early initiative in <span class="highlight">automating compliance workflows</span>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section">
+      <div class="section-label"><span>Technical Skills</span></div>
+      <div class="two-col">
+        <div>
+          <div class="skill-group">
+            <div class="skill-group-label">AI / ML</div>
+            <div class="skill-tags">
+              <span class="tag accent">Machine Learning</span>
+              <span class="tag accent">Deep Learning</span>
+              <span class="tag accent">NLP / Sentiment Analysis</span>
+              <span class="tag accent">Scikit-Learn</span>
+              <span class="tag accent">TensorFlow / Keras</span>
+              <span class="tag accent">Unsupervised Clustering</span>
+              <span class="tag accent">Claude API / Claude Code</span>
+              <span class="tag accent">OpenAI Codex</span>
+              <span class="tag accent">Vertex AI</span>
+              <span class="tag accent">AI Co-Development</span>
+              <span class="tag accent">LLM Integration</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Languages</div>
+            <div class="skill-tags">
+              <span class="tag">Python (Expert)</span>
+              <span class="tag">SQL</span>
+              <span class="tag">R</span>
+              <span class="tag">SAS</span>
+              <span class="tag">Java</span>
+              <span class="tag">PowerShell</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group">
+            <div class="skill-group-label">Platforms &amp; Cloud</div>
+            <div class="skill-tags">
+              <span class="tag">Snowflake</span>
+              <span class="tag">Databricks</span>
+              <span class="tag">Amazon RDS</span>
+              <span class="tag">S3</span>
+              <span class="tag">Google Cloud SQL</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Cloud Run</span>
+              <span class="tag">Hadoop Data Lake</span>
+              <span class="tag">Oracle / DB2</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Leadership &amp; Methods</div>
+            <div class="skill-tags">
+              <span class="tag accent">Data Strategy</span>
+              <span class="tag accent">Executive Storytelling</span>
+              <span class="tag accent">Pipeline Architecture</span>
+              <span class="tag accent">Team Enablement</span>
+              <span class="tag accent">Regulatory Compliance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION + AWARDS side by side -->
+    <div class="two-col">
+      <div class="section">
+        <div class="section-label"><span>Education</span></div>
+        <div class="edu-item">
+          <div class="edu-degree">B.S. Industrial &amp; Applied Mathematics</div>
+          <div class="edu-school">Metropolitan State University · Dec 2019</div>
+          <div class="edu-detail">Operations Research · Regression · Linear Programming · Probability · Markov Chains</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label"><span>Awards &amp; Recognition</span></div>
+        <div class="award-row">
+          <span class="award-badge gold">1st Place</span>
+          <span class="award-text">MN State IT Center of Excellence <strong>DATAGON</strong> ML Competition — Advanced Category (2019)</span>
+        </div>
+        <div class="award-row">
+          <span class="award-badge silver">Top 10</span>
+          <span class="award-text">MUDAC Data Challenge Finalist — ranked among top 10 of 50+ competing teams</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
