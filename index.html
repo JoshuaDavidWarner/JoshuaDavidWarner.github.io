@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Warner — AI & Data Leader</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1a1a;
+    --ink2: #444;
+    --ink3: #888;
+    --line: #e8e8e8;
+    --bg: #ffffff;
+    --bg2: #f7f7f5;
+    --accent: #4f46e5;
+    --accent2: #818cf8;
+    --tag-bg: #f0f0fd;
+    --tag-txt: #4338ca;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: 'Segoe UI', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--bg); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo { font-size: 0.9rem; font-weight: 600; color: var(--ink); letter-spacing: -0.3px; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 0.82rem; color: var(--ink3); text-decoration: none; letter-spacing: 0.3px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    max-width: 900px; margin: 0 auto;
+    padding: 96px 40px 80px;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px;
+  }
+  .hero h1 { font-size: 3rem; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; color: var(--ink); }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { font-size: 1rem; color: var(--ink2); margin-top: 20px; max-width: 480px; line-height: 1.75; }
+  .hero-actions { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 10px 22px; border-radius: 6px;
+    font-size: 0.82rem; font-weight: 600; text-decoration: none; cursor: pointer;
+    border: 1.5px solid transparent; transition: all 0.2s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn-primary:hover { background: #4338ca; }
+  .btn-outline { background: transparent; color: var(--accent); border-color: var(--accent); }
+  .btn-outline:hover { background: var(--tag-bg); }
+  .hero-avatar {
+    width: 130px; height: 130px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.6rem; font-weight: 700; color: #fff; flex-shrink: 0;
+    letter-spacing: -1px;
+  }
+
+  /* SECTION */
+  section { max-width: 900px; margin: 0 auto; padding: 72px 40px; border-top: 1px solid var(--line); }
+  .section-label {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 32px;
+  }
+
+  /* SKILLS STRIP */
+  .skills-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .skill-pill {
+    font-size: 0.76rem; color: var(--tag-txt); background: var(--tag-bg);
+    padding: 4px 12px; border-radius: 20px; border: 1px solid #ddd6fe;
+  }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .project-card {
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 24px; background: var(--bg);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover { border-color: var(--accent2); box-shadow: 0 4px 20px rgba(79,70,229,0.07); }
+  .project-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: var(--tag-bg); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+  }
+  .project-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
+  .project-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .project-card p { font-size: 0.82rem; color: var(--ink2); line-height: 1.65; margin-bottom: 14px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .project-tag { font-size: 0.7rem; color: var(--ink3); background: var(--bg2); padding: 3px 9px; border-radius: 12px; border: 1px solid var(--line); }
+  .win-badge {
+    display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.5px;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px;
+  }
+  .win-gold { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .win-blue { background: var(--tag-bg); color: var(--tag-txt); border: 1px solid #ddd6fe; }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; padding-left: 20px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
+  .tl-item { position: relative; margin-bottom: 36px; }
+  .tl-item::before { content: ''; position: absolute; left: -24px; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--accent); }
+  .tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
+  .tl-role { font-size: 0.92rem; font-weight: 600; color: var(--ink); }
+  .tl-company { font-size: 0.82rem; color: var(--accent); font-weight: 500; margin-bottom: 2px; }
+  .tl-date { font-size: 0.75rem; color: var(--ink3); }
+  .tl-desc { font-size: 0.82rem; color: var(--ink2); line-height: 1.65; }
+
+  /* AWARDS */
+  .awards-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .award-card {
+    flex: 1; min-width: 200px; border: 1px solid var(--line); border-radius: 10px;
+    padding: 20px; background: var(--bg2);
+  }
+  .award-num { font-size: 1.8rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+  .award-desc { font-size: 0.8rem; color: var(--ink2); line-height: 1.5; }
+
+  /* CONTACT */
+  .contact-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.84rem; color: var(--ink2); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 18px; background: var(--bg);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; flex-shrink: 0; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    text-align: center; padding: 28px 40px;
+    font-size: 0.75rem; color: var(--ink3);
+  }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; padding: 56px 24px 48px; }
+    .hero-avatar { display: none; }
+    .hero h1 { font-size: 2.2rem; }
+    nav { padding: 0 24px; }
+    .nav-links { gap: 16px; }
+    section { padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Joshua <span>Warner</span></div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#recognition">Recognition</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">AI &amp; Data Leader · Director / VP</div>
+    <h1>Building <em>intelligent</em> systems that move the needle.</h1>
+    <p class="hero-sub">8+ years driving business transformation across healthcare, financial services, and enterprise. Specializing in AI-powered SaaS, cloud infrastructure, and LLM integration on GCP and AWS.</p>
+    <div class="hero-actions">
+      <a href="https://www.linkedin.com/in/joshua-david-warner/" target="_blank" class="btn btn-primary">View Resume</a>
+      <a href="#projects" class="btn btn-outline">See Projects</a>
+    </div>
+  </div>
+  <div class="hero-avatar">JW</div>
+</div>
+
+<!-- SKILLS -->
+<section>
+  <div class="section-label">Technical Skills</div>
+  <div class="skills-strip">
+    <span class="skill-pill">Python</span>
+    <span class="skill-pill">SQL</span>
+    <span class="skill-pill">R</span>
+    <span class="skill-pill">Claude API / Claude Code</span>
+    <span class="skill-pill">OpenAI Codex</span>
+    <span class="skill-pill">Vertex AI</span>
+    <span class="skill-pill">LLM Integration</span>
+    <span class="skill-pill">BERT / NLP</span>
+    <span class="skill-pill">TensorFlow / Keras</span>
+    <span class="skill-pill">Scikit-Learn</span>
+    <span class="skill-pill">GCP · Cloud Run</span>
+    <span class="skill-pill">Snowflake</span>
+    <span class="skill-pill">Databricks</span>
+    <span class="skill-pill">Firebase</span>
+    <span class="skill-pill">Google Cloud SQL</span>
+    <span class="skill-pill">Amazon RDS · S3</span>
+    <span class="skill-pill">SOC2 Compliance</span>
+    <span class="skill-pill">X12 EDI (835/837)</span>
+    <span class="skill-pill">Hadoop Data Lake</span>
+    <span class="skill-pill">Data Pipeline Architecture</span>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Featured Projects</div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="win-badge win-blue">Aroris Health · Launch</div>
+      <div class="project-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 17H5a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><path d="M13 21l4-4m0 0l4 4m-4-4v6"/><path d="M3 9h18"/></svg>
+      </div>
+      <h3>Live Claims Monitoring</h3>
+      <p>First complete SaaS module at Aroris Health. Processes millions of 835 X12 claims at 100% accuracy, surfacing actionable insights that drive A360 membership revenue.</p>
+      <div class="project-tags">
+        <span class="project-tag">GCP</span><span class="project-tag">835 X12</span><span class="project-tag">Cloud Run</span><span class="project-tag">Firebase</span><span class="project-tag">SOC2</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="win-badge win-blue">Aroris Health · API</div>
+      <div class="project-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <h3>Competitor Intelligence API</h3>
+      <p>Deployed API combining Claude API and Google Geodistance to compute provider proximity and specialization similarity, giving healthcare clients real-time competitive intelligence.</p>
+      <div class="project-tags">
+        <span class="project-tag">Claude API</span><span class="project-tag">GCP</span><span class="project-tag">Geodistance</span><span class="project-tag">REST API</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="win-badge win-blue">Aroris Health · Revenue</div>
+      <div class="project-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>837 / 835 EDI Parser & Dispute Engine</h3>
+      <p>Production-grade 835 and 837 X12 parsers co-developed with Claude and ChatGPT. Automates dispute submissions to payers, recovering tens of thousands of dollars annually per client.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span><span class="project-tag">837 X12</span><span class="project-tag">Claude Code</span><span class="project-tag">Codex</span><span class="project-tag">PostgreSQL</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="win-badge win-blue">Optum · ML</div>
+      <div class="project-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>BERT Customer Segmentation</h3>
+      <p>Built and deployed a BERT NLP model fused with 3rd-party sentiment scores to segment Optum Marketing customers, directing leadership investment to statistically significant groups.</p>
+      <div class="project-tags">
+        <span class="project-tag">BERT</span><span class="project-tag">NLP</span><span class="project-tag">Python</span><span class="project-tag">Snowflake</span><span class="project-tag">Databricks</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="win-badge win-blue">Optum · Automation</div>
+      <div class="project-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>RX Reporting Automation</h3>
+      <p>Automated 75% of all reports produced by the RX data analysis team via end-to-end ETL pipelines, returning 1,000+ hours annually to higher-value analytical work.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span><span class="project-tag">Snowflake</span><span class="project-tag">Amazon RDS</span><span class="project-tag">S3</span><span class="project-tag">ETL</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="win-badge win-blue">Huntington Bank · Risk</div>
+      <div class="project-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>AML Data Integrity & Risk Pipeline</h3>
+      <p>Designed 50+ AML compliance tests and led the end-to-end Hadoop → Snowflake data lake pipeline. Deployed a 2,000-line Python risk reporting engine used across all lines of defense.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span><span class="project-tag">Snowflake</span><span class="project-tag">Hadoop</span><span class="project-tag">AML</span><span class="project-tag">R</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-header">
+        <div>
+          <div class="tl-role">Senior Data Scientist</div>
+          <div class="tl-company">Aroris Health</div>
+        </div>
+        <div class="tl-date">Early 2025 – Present</div>
+      </div>
+      <p class="tl-desc">Designing and deploying AI-powered SaaS modules on GCP. Full product ownership from ML model development through customer-facing delivery, with SOC2-compliant infrastructure on Vertex AI, Cloud Run, Firebase, and Cloud SQL.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-header">
+        <div>
+          <div class="tl-role">Senior Data Scientist</div>
+          <div class="tl-company">Optum (UnitedHealth Group)</div>
+        </div>
+        <div class="tl-date">Apr 2022 – Early 2025</div>
+      </div>
+      <p class="tl-desc">Built BERT-based segmentation models, automated 75% of RX reporting, and upskilled 500+ employees through org-wide data engineering bootcamps.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-header">
+        <div>
+          <div class="tl-role">Senior Data Analytics Auditor</div>
+          <div class="tl-company">Huntington Bank</div>
+        </div>
+        <div class="tl-date">Sept 2020 – Apr 2022</div>
+      </div>
+      <p class="tl-desc">Led AML compliance testing, Hadoop data lake architecture, and Python risk reporting engine across billion-dollar portfolios.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-header">
+        <div>
+          <div class="tl-role">Senior Analytic Specialist</div>
+          <div class="tl-company">Wells Fargo</div>
+        </div>
+        <div class="tl-date">Jan 2019 – Sept 2020</div>
+      </div>
+      <p class="tl-desc">Built Tableau dashboards and SQL reporting for Corporate Trust Services. Engineered Python automation for SEC regulatory filing conversion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section id="recognition">
+  <div class="section-label">Recognition</div>
+  <div class="awards-row">
+    <div class="award-card">
+      <div class="award-num">1st</div>
+      <div class="award-desc"><strong>MN State IT Center of Excellence — DATAGON</strong><br>Machine Learning Competition, Advanced Category · 2019</div>
+    </div>
+    <div class="award-card">
+      <div class="award-num">Top 10</div>
+      <div class="award-desc"><strong>MUDAC Data Challenge</strong><br>Finalist among 50+ competing teams</div>
+    </div>
+    <div class="award-card">
+      <div class="award-num">B.S.</div>
+      <div class="award-desc"><strong>Industrial & Applied Mathematics</strong><br>Metropolitan State University · 2019<br>Operations Research · Linear Programming · Markov Chains</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <div class="contact-grid">
+    <a href="mailto:joshuadavidwarner@yahoo.com" class="contact-link">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      joshuadavidwarner@yahoo.com
+    </a>
+    <a href="https://www.linkedin.com/in/joshua-david-warner/" target="_blank" class="contact-link">
+      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      linkedin.com/in/joshua-david-warner
+    </a>
+    <a href="https://www.linkedin.com/in/joshua-david-warner/" target="_blank" class="contact-link">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Download Resume (PDF)
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Joshua Warner · AI &amp; Data Leader · Minneapolis, MN
+</footer>
+
+</body>
+</html>
